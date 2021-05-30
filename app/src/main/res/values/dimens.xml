@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bigTextSize">60sp</dimen>
+    <dimen name="subtitleTextSize">18sp</dimen>
+    <dimen name="extraSmallSpace">5dp</dimen>
+    <dimen name="smallSpace">10dp</dimen>
+    <dimen name="mediumSpace">15dp</dimen>
+    <dimen name="largeSpace">20dp</dimen>
+    <dimen name="extraLargeSpace">30dp</dimen>
+</resources>
