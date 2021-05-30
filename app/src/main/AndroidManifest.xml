@@ -12,14 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTennisInsight">
-        <activity android:name=".splash.SplashActivity">
+        <activity android:name=".home.HomeActivity">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".game.GameActivity"/>
-        <activity android:name=".home.HomeActivity"/>
+        <activity android:name=".splash.SplashActivity"/>
         <activity android:name=".intro.IntroActivity"/>
         <activity android:name=".match.MatchActivity"/>
         <activity android:name=".matches.MatchesActivity"/>

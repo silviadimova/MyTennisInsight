@@ -13,4 +13,15 @@
     <color name="green">#00FF00</color>
     <color name="yellow">#FFEB3B</color>
     <color name="orange">#FFB79A</color>
+    <color name="transparent_green">#6662FF00</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="gray">#808080</color>
+    <color name="olive">#808000</color>
+    <color name="purple">#800080</color>
+    <color name="maroon">#800000</color>
+    <color name="aqua">#00FFFF</color>
+    <color name="lime">#00FF00</color>
+    <color name="fuchsia">#FF00FF</color>
+    <color name="navy">#000080</color>
+
 </resources>

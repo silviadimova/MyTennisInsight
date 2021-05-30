@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyTennisInsight</string>
+    <string name="home_start_button">START Fast 4 Match</string>
+    <string name="home_matches_button">Matches</string>
 </resources>
