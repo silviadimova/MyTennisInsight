@@ -8,20 +8,22 @@ import com.sniper.tennis.insight.R
 
 class HomeActivity: AppCompatActivity(), HomePresenter.View {
 
-    private val presenter = HomePresenter(this, HomeModel())
+    private val presenter: HomePresenter = HomePresenter(this, HomeModel())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity_layout)
-        val matchesButton = findViewById<AppCompatButton>(R.id.home_matches_button)
-        matchesButton.setOnClickListener {
-            presenter.displayMatches()
-
+        findViewById<AppCompatButton>(R.id.home_matches_button).setOnClickListener {
+            presenter.onMatchesClick()
+        }
+        findViewById<AppCompatButton>(R.id.home_start_button).setOnClickListener {
+            presenter.onMatchClick()
         }
     }
 
     override fun navigateTo(target: Class<*>) {
-        val matchesActivityIntent = Intent(this,target)
-        startActivity(matchesActivityIntent)
+        val targetIntent: Intent = Intent(this,target)
+        startActivity(targetIntent)
+
     }
 }
