@@ -7,5 +7,9 @@
     <string name="end_set">End set</string>
     <string name="resume_match">Do you want to resume match?</string>
     <string name="finish_match">Do you want to end match?</string>
+    <string name="start_point">Start point</string>
+    <string name="want_end_set">Do you want to end set</string>
+    <string name="yes_button">Yes</string>
+    <string name="no_button">No</string>
 
 </resources>
