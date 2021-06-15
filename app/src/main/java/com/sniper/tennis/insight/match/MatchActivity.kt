@@ -19,6 +19,7 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.match_activity_layout)
+        MatchTypeDialogFragment().show(supportFragmentManager,MATCH_TYPE_DIALOG_TAG)
         val bottomSheetButton1: AppCompatButton = findViewById(R.id.bottom_sheet_button1)
         bottomSheetButton1.text = getString(R.string.start_set)
         val bottomSheetButton2: AppCompatButton = findViewById(R.id.bottom_sheet_button2)

@@ -5,5 +5,8 @@
         <item name="android:textColor">@color/blue</item>
         <item name="android:textAllCaps">true</item>
     </style>
+    <style name="points_buttons_style" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_point_selector</item>
+    </style>
 
 </resources>

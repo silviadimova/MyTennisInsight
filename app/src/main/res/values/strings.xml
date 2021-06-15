@@ -11,5 +11,27 @@
     <string name="want_end_set">Do you want to end set</string>
     <string name="yes_button">Yes</string>
     <string name="no_button">No</string>
+    <string name="returns">RETURNS</string>
+    <string name="serves">SERVES</string>
+    <string name="first_serve">1st</string>
+    <string name="second_serve">2nd</string>
+    <string name="double_fault">double fault</string>
+    <string name="successful">Successful</string>
+    <string name="unsuccessful">Unsuccessful</string>
+    <string name="errors">ERRORS</string>
+    <string name="unforced">Unforced</string>
+    <string name="forced">Forced</string>
+    <string name="opponent_error">Opponent Error</string>
+    <string name="volley">Volley</string>
+    <string name="winner">Winner</string>
+    <string name="save">SAVE</string>
+    <string name="general_analysis">General Analysis</string>
+    <string name="forehand_analysis">Forehand Analysis</string>
+    <string name="select_analysis">Please select type of analysis</string>
+    <string name="backhand_analysis">Backhand analysis</string>
+    <string name="serve_analysis">Serve Analysis</string>
+    <string name="return_analysis">Return Analysis</string>
+    <string name="volley_analysis">Volley Analysis</string>
+
 
 </resources>
