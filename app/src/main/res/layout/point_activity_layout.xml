@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -139,6 +140,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/mediumSpace"/>
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -150,6 +152,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/winner_button"
             android:layout_marginTop="40dp"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/point_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/save_button"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/red"
+            android:visibility="gone"
+            tools:text="@string/point_error_message"
+            android:textSize="@dimen/subtitleTextSize"
+            tools:visibility="visible"
+            android:layout_marginTop="10dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -32,6 +32,7 @@
     <string name="serve_analysis">Serve Analysis</string>
     <string name="return_analysis">Return Analysis</string>
     <string name="volley_analysis">Volley Analysis</string>
+    <string name="point_error_message">Please select at least one property</string>
 
 
 </resources>
