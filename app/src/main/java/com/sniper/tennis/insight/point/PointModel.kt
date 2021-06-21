@@ -1,11 +1,13 @@
 package com.sniper.tennis.insight.point
 
-import android.content.SharedPreferences
 import com.sniper.tennis.insight.dataModels.GeneralAnalysisDataModel
+import com.sniper.tennis.insight.database.MyAppDatabase
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
-class PointModel () {
+class PointModel (private val myAppDatabase: MyAppDatabase) {
 
-    fun savePointProperties(dataModel: GeneralAnalysisDataModel){
-
+    suspend fun savePointProperties(dataModel: GeneralAnalysisDataModel) {
+        myAppDatabase.getGeneralAnalysisPointDao().createPoint(dataModel)
     }
 }

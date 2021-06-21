@@ -1,23 +1,24 @@
 package com.sniper.tennis.insight.point
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.content.ContextCompat
 import com.sniper.tennis.insight.R
 import com.sniper.tennis.insight.dataModels.GeneralAnalysisDataModel
+import com.sniper.tennis.insight.database.MyAppDatabase
 
 class PointActivity: AppCompatActivity(), PointPresenter.View {
 
-    private val presenter = PointPresenter(this, PointModel())
+    private lateinit var presenter: PointPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.point_activity_layout)
+
+        presenter = PointPresenter(this, PointModel(MyAppDatabase.getInstance(this)))
 
         val successfulReturnButton: AppCompatButton = findViewById(R.id.successfulReturnButton)
         val unsuccessfulReturnButton: AppCompatButton = findViewById(R.id.unSuccessfulReturnButton)
@@ -30,7 +31,6 @@ class PointActivity: AppCompatActivity(), PointPresenter.View {
         val volleyButton: AppCompatButton = findViewById(R.id.volleyButton)
         val winnerButton: AppCompatButton = findViewById(R.id.winner_button)
         val saveButton: AppCompatButton = findViewById(R.id.save_button)
-
 
         successfulReturnButton.setOnClickListener {
             twoButtonsToggle(successfulReturnButton,unsuccessfulReturnButton)
@@ -72,22 +72,37 @@ class PointActivity: AppCompatActivity(), PointPresenter.View {
         }
         saveButton.setOnClickListener {
             val dataModel: GeneralAnalysisDataModel = GeneralAnalysisDataModel(
-                    successfulReturn = successfulReturnButton.isSelected,
-                    unsuccessfulReturn = unsuccessfulReturnButton.isSelected,
-                    firstServe = firstServeButton.isSelected,
-                    secondServe = secondServeButton.isSelected,
-                    doubleFault = doubleFaultButton.isSelected,
-                    unforcedError = unforcedErrorsButton.isSelected,
-                    forcedError = forcedErrorsButton.isSelected,
-                    opponentError = opponentErrorButton.isSelected,
-                    volley = volleyButton.isSelected,
-                    winner = winnerButton.isSelected
+                setID = 0,
+                matchID = 0,
+                successfulReturn = successfulReturnButton.isSelected,
+                unsuccessfulReturn = unsuccessfulReturnButton.isSelected,
+                firstServe = firstServeButton.isSelected,
+                secondServe = secondServeButton.isSelected,
+                doubleFault = doubleFaultButton.isSelected,
+                unforcedError = unforcedErrorsButton.isSelected,
+                forcedError = forcedErrorsButton.isSelected,
+                opponentError = opponentErrorButton.isSelected,
+                volley = volleyButton.isSelected,
+                winner = winnerButton.isSelected
             )
             presenter.onSubmitDataModel(dataModel)
 
         }
 
     }
+
+    override fun showLoader() {
+        findViewById<FrameLayout>(R.id.progressBar).visibility = View.VISIBLE
+    }
+
+    override fun hideLoader() {
+        findViewById<FrameLayout>(R.id.progressBar).visibility = View.GONE
+    }
+
+    override fun closePoint() {
+        finish()
+    }
+
     private fun twoButtonsToggle(button1: AppCompatButton, button2: AppCompatButton){
         if (button1.isSelected) {
             button1.isSelected = false
