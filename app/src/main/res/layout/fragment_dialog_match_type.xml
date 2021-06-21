@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/mediumSpace">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_analysis"
+        android:textSize="@dimen/subtitleTextSize"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:paddingTop="@dimen/mediumSpace"
+        android:paddingBottom="@dimen/mediumSpace"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/general_analysis_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/general_analysis" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/forehand_analysis_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/forehand_analysis" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/backhand_analysis_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/backhand_analysis" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/serve_analysis_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/serve_analysis" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/return_analysis_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/return_analysis" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/volley_analysis_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/volley_analysis" />
+
+</LinearLayout>

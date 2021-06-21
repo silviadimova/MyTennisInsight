@@ -1,9 +1,11 @@
 package com.sniper.tennis.insight.match
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +19,7 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.match_activity_layout)
+        MatchTypeDialogFragment().show(supportFragmentManager,MATCH_TYPE_DIALOG_TAG)
         val bottomSheetButton1: AppCompatButton = findViewById(R.id.bottom_sheet_button1)
         bottomSheetButton1.text = getString(R.string.start_set)
         val bottomSheetButton2: AppCompatButton = findViewById(R.id.bottom_sheet_button2)
@@ -46,12 +49,37 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
 
         }
         bottomSheetButton1.setOnClickListener {
-            Toast.makeText(this,R.string.resume_match, Toast.LENGTH_LONG).show()
+            presenter.onStartSetClick()
         }
         bottomSheetButton2.setOnClickListener {
-            Toast.makeText(this,R.string.finish_match, Toast.LENGTH_LONG).show()
+            presenter.onEndMatchClick()
+
         }
 
+    }
+
+    override fun navigateTo(target: Class<*>) {
+        val targetIntent: Intent = Intent(this,target)
+        startActivity(targetIntent)
+    }
+
+    override fun displayEndMatchDialog() {
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.setMessage(R.string.finish_match).setCancelable(false)
+        alertDialog.setPositiveButton(R.string.yes_button, object: DialogInterface.OnClickListener{
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+                dialog?.dismiss()
+            }
+
+        })
+        alertDialog.setNegativeButton(R.string.no_button, object: DialogInterface.OnClickListener{
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+                dialog?.dismiss()
+            }
+
+        })
+
+        alertDialog.show()
     }
 
 }

@@ -12,7 +12,7 @@ class HomeActivity: AppCompatActivity(), HomePresenter.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_activity_layout)
+        setContentView(R.layout.activity_home_layout)
         findViewById<AppCompatButton>(R.id.home_matches_button).setOnClickListener {
             presenter.onMatchesClick()
         }
