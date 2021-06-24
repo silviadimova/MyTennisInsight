@@ -168,6 +168,26 @@
             tools:visibility="visible"
             android:layout_marginTop="10dp"/>
 
+        <FrameLayout
+            android:id="@+id/progressBar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/black_transparent"
+            android:visibility="gone"
+            android:elevation="2dp"
+            android:focusable="true"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+            <ProgressBar
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
