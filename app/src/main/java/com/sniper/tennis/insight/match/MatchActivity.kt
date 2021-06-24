@@ -11,15 +11,19 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.sniper.tennis.insight.R
+import com.sniper.tennis.insight.database.MyAppDatabase
 
 class MatchActivity: AppCompatActivity(), MatchPresenter.View {
 
-    private val presenter = MatchPresenter(this, MatchModel())
+    private lateinit var presenter: MatchPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.match_activity_layout)
-        MatchTypeDialogFragment().show(supportFragmentManager,MATCH_TYPE_DIALOG_TAG)
+        presenter = MatchPresenter(this, MatchModel(MyAppDatabase.getInstance(this)))
+        MatchTypeDialogFragment()
+                .setDialogListener(::onMatchTypeSelected)
+                .show(supportFragmentManager,MATCH_TYPE_DIALOG_TAG)
         val bottomSheetButton1: AppCompatButton = findViewById(R.id.bottom_sheet_button1)
         bottomSheetButton1.text = getString(R.string.start_set)
         val bottomSheetButton2: AppCompatButton = findViewById(R.id.bottom_sheet_button2)
@@ -80,6 +84,10 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
         })
 
         alertDialog.show()
+    }
+
+    private fun onMatchTypeSelected(selectedMatchType: Int) {
+        //presenter.onMatchTypeSelected(selectedMatchType)
     }
 
 }

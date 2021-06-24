@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.DialogFragment
 import com.sniper.tennis.insight.R
+import com.sniper.tennis.insight.dataModels.GENERAL_ANALYSIS_TYPE
 
 const val MATCH_TYPE_DIALOG_TAG = "MatchTypeDialogFragment"
 
 class MatchTypeDialogFragment: DialogFragment() {
-
+    private lateinit var temp: (selectedType: Int) -> Unit
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -20,7 +21,7 @@ class MatchTypeDialogFragment: DialogFragment() {
         val view: View = inflater.inflate(R.layout.fragment_dialog_match_type, container, false)
         isCancelable = false
         view.findViewById<AppCompatButton>(R.id.general_analysis_button).setOnClickListener {
-            dismiss()
+          temp(GENERAL_ANALYSIS_TYPE)
         }
         view.findViewById<AppCompatButton>(R.id.forehand_analysis_button).setOnClickListener {
             dismiss()
@@ -39,6 +40,11 @@ class MatchTypeDialogFragment: DialogFragment() {
         }
 
         return view
+    }
+
+    fun setDialogListener(callback: (selectedType: Int) -> Unit): MatchTypeDialogFragment {
+        temp = callback
+        return this
     }
 
 

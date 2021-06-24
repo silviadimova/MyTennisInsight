@@ -5,10 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.sniper.tennis.insight.dataModels.GeneralAnalysisDataModel
+import com.sniper.tennis.insight.dataModels.MatchDataModel
 
 @Database(
     entities = arrayOf(
-        GeneralAnalysisDataModel::class
+        GeneralAnalysisDataModel::class,
+        MatchDataModel::class
     ),
     exportSchema = false,
     version = 1
@@ -32,5 +34,6 @@ abstract class MyAppDatabase: RoomDatabase() {
     }
 
     abstract fun getGeneralAnalysisPointDao(): GeneralAnalysisPointDao
+    abstract fun getStartMatchDao(): StartMatchDao
 
 }
