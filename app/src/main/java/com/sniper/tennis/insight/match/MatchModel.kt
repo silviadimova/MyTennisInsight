@@ -5,8 +5,12 @@ import com.sniper.tennis.insight.database.MyAppDatabase
 
 class MatchModel(private val myAppDatabase: MyAppDatabase) {
 
-    suspend fun saveMatchStarted(dataModel: MatchDataModel){
+    suspend fun createMatch(dataModel: MatchDataModel) : Long {
+        return myAppDatabase.getMatchDao().createMatch(dataModel)
+    }
 
+    suspend fun updateMatchToFinished(matchId: Long){
+        myAppDatabase.getMatchDao().finishMatch(matchId)
     }
 
 }

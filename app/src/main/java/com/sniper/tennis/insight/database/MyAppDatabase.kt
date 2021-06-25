@@ -34,6 +34,7 @@ abstract class MyAppDatabase: RoomDatabase() {
     }
 
     abstract fun getGeneralAnalysisPointDao(): GeneralAnalysisPointDao
-    abstract fun getStartMatchDao(): StartMatchDao
+
+    abstract fun getMatchDao(): MatchDao
 
 }

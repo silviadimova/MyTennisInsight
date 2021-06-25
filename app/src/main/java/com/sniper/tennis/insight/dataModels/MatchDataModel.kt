@@ -3,6 +3,8 @@ package com.sniper.tennis.insight.dataModels
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+const val NO_MATCH_ID: Long = 0
+
 const val GENERAL_ANALYSIS_TYPE = 1
 const val FOREHAND_ANALYSIS_TYPE = 2
 const val BACKHAND_ANALYSIS_TYPE = 3
@@ -13,8 +15,8 @@ const val MATCH_TABLE = "Match"
 
 @Entity(tableName = MATCH_TABLE)
 data class MatchDataModel(
-        val matchId: Int,
-        val matchType: Int
+        val matchType: Int,
+        val isFinished: Boolean
 
 ){
     @PrimaryKey(autoGenerate = true)

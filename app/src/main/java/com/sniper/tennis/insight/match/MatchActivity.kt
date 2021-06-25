@@ -11,6 +11,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.sniper.tennis.insight.R
+import com.sniper.tennis.insight.dataModels.MatchDataModel
 import com.sniper.tennis.insight.database.MyAppDatabase
 
 class MatchActivity: AppCompatActivity(), MatchPresenter.View {
@@ -24,6 +25,7 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
         MatchTypeDialogFragment()
                 .setDialogListener(::onMatchTypeSelected)
                 .show(supportFragmentManager,MATCH_TYPE_DIALOG_TAG)
+
         val bottomSheetButton1: AppCompatButton = findViewById(R.id.bottom_sheet_button1)
         bottomSheetButton1.text = getString(R.string.start_set)
         val bottomSheetButton2: AppCompatButton = findViewById(R.id.bottom_sheet_button2)
@@ -62,7 +64,7 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
 
     }
 
-    override fun navigateTo(target: Class<*>) {
+    override fun navigateTo(target: Class<*>, matchId: Long) {
         val targetIntent: Intent = Intent(this,target)
         startActivity(targetIntent)
     }
@@ -72,6 +74,7 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
         alertDialog.setMessage(R.string.finish_match).setCancelable(false)
         alertDialog.setPositiveButton(R.string.yes_button, object: DialogInterface.OnClickListener{
             override fun onClick(dialog: DialogInterface?, which: Int) {
+                presenter.onMatchEndConfirm()
                 dialog?.dismiss()
             }
 
@@ -86,8 +89,13 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
         alertDialog.show()
     }
 
+    override fun finishScreen() {
+        finish()
+    }
+
     private fun onMatchTypeSelected(selectedMatchType: Int) {
-        //presenter.onMatchTypeSelected(selectedMatchType)
+        val dataModel: MatchDataModel = MatchDataModel(selectedMatchType,false)
+        presenter.onSubmitDataModel(dataModel)
     }
 
 }
