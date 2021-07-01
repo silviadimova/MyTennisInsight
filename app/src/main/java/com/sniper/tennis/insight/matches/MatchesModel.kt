@@ -1,19 +1,18 @@
 package com.sniper.tennis.insight.matches
 
-import android.content.SharedPreferences
+import com.sniper.tennis.insight.dataModels.MatchDataModel
+import com.sniper.tennis.insight.database.MyAppDatabase
 
-class MatchesModel () {
+class MatchesModel (private val myAppDatabase: MyAppDatabase) {
 
-    val savedMatch = "Match1"
-    //val savedMatch = preference.getString("key", "")!!
+    suspend fun getAllMatches() : MutableList<MatchDataModel> {
+        return myAppDatabase.getMatchDao().readAllMatches()
+    }
 
+    suspend fun deleteMatch(matchDataModel: MatchDataModel): Int{
+       return myAppDatabase.getMatchDao().deleteMatch(matchDataModel)
+    }
 
-    //fun saveMatch(savedMatch: String){
-      //  val preferenceEditor = preference.edit()
-        //preferenceEditor.putString("key", name)
-
-        //preferenceEditor.apply()
-    //}
 
 
 }

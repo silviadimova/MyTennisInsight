@@ -1,30 +1,42 @@
 package com.sniper.tennis.insight.matches
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sniper.tennis.insight.R
+import com.sniper.tennis.insight.dataModels.MatchDataModel
+import com.sniper.tennis.insight.database.MyAppDatabase
 
 class MatchesActivity: AppCompatActivity(), MatchesPresenter.View {
 
-    private val presenter = MatchesPresenter(this, MatchesModel())
     private val matchesAdapter: MatchesAdapter = MatchesAdapter(this)
+    private lateinit var presenter: MatchesPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.matches_activity_layout)
+        presenter = MatchesPresenter(this, MatchesModel(MyAppDatabase.getInstance(this)))
+
         val matchesRecyclerView: RecyclerView = findViewById<RecyclerView>(R.id.matches_recycler_view)
         matchesRecyclerView.adapter = matchesAdapter
         matchesRecyclerView.isScrollbarFadingEnabled = false
-
-        //presenter.readPreference()
-        val matchesList: List<String> = mutableListOf<String>("Match1","Match2","Match3","Match4","Match5","Match6")
+        presenter.onMatchesListRead()
+    }
+    override fun displayMatchesList(matchesList: List<MatchDataModel>) {
         matchesAdapter.submitList(matchesList)
     }
+    fun onSelectedMatchDelete(matchDataModel: MatchDataModel,position: Int){
+        presenter.onMatchClickDelete(matchDataModel,position)
+     }
 
-    override fun displayCache(cachedMatch: String) {
-
-
+    override fun removeMatch(position: Int) {
+        matchesAdapter.notifyItemRemoved(position)
     }
+
+    override fun displayError() {
+        Toast.makeText(this,R.string.match_delete_error, Toast.LENGTH_LONG).show()
+    }
+
 
 }

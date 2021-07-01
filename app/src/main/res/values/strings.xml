@@ -33,6 +33,7 @@
     <string name="return_analysis">Return Analysis</string>
     <string name="volley_analysis">Volley Analysis</string>
     <string name="point_error_message">Please select at least one property</string>
+    <string name="match_delete_error">Not able to delete match</string>
 
 
 </resources>
