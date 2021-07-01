@@ -17,7 +17,11 @@ class MatchesPresenter (
         GlobalScope.launch(Dispatchers.IO){
             matchesList = model.getAllMatches()
             withContext(Dispatchers.Main){
-                view.displayMatchesList(matchesList)
+                when {
+                    matchesList.isEmpty() -> view.displayNoMatches()
+                    else ->  view.displayMatchesList(matchesList)
+                }
+
             }
         }
     }
@@ -31,6 +35,9 @@ class MatchesPresenter (
                     else -> {
                         matchesList.removeAt(position)
                         view.removeMatch(position)
+                        if(matchesList.isEmpty()){
+                            view.displayNoMatches()
+                        }
                     }
                 }
             }
@@ -43,6 +50,7 @@ class MatchesPresenter (
         fun displayMatchesList(matchesList: List<MatchDataModel>)
         fun removeMatch(position: Int)
         fun displayError()
+        fun displayNoMatches()
 
     }
 }
