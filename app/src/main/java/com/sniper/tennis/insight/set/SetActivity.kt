@@ -40,6 +40,7 @@ class SetActivity: AppCompatActivity(), SetPresenter.View {
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                //no implementation
             }
         })
         bottomSheetParent.setOnClickListener {
@@ -79,12 +80,13 @@ class SetActivity: AppCompatActivity(), SetPresenter.View {
     }
 
     override fun navigateTo(target: Class<*>, setID: Int) {
-        val targetIntent: Intent = Intent(this,target)
+        val targetIntent = Intent(this,target)
         val matchId = intent.getIntExtra(MATCH_ID_EXTRA,0)
         targetIntent.putExtra(MATCH_ID_EXTRA, matchId)
         targetIntent.putExtra(SET_ID_EXTRA,setID)
         startActivity(targetIntent)
     }
+
     override fun finishScreen(){
         finish()
     }

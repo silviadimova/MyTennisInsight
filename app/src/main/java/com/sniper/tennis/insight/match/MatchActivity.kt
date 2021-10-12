@@ -67,7 +67,7 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
     }
 
     override fun navigateTo(target: Class<*>, matchId: Long) {
-        val targetIntent: Intent = Intent(this,target)
+        val targetIntent = Intent(this,target)
         targetIntent.putExtra(MATCH_ID_EXTRA, matchId.toInt())
         startActivity(targetIntent)
     }
@@ -97,7 +97,7 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
     }
 
     private fun onMatchTypeSelected(selectedMatchType: Int) {
-        val dataModel: MatchDataModel = MatchDataModel(selectedMatchType,false)
+        val dataModel = MatchDataModel(selectedMatchType,false)
         presenter.onSubmitDataModel(dataModel)
     }
 
