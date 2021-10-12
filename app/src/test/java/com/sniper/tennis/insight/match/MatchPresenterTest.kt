@@ -10,22 +10,33 @@ import org.junit.Test
 
 class MatchPresenterTest {
 
-    lateinit var tested :MatchPresenter
+    private lateinit var tested: MatchPresenter
     @RelaxedMockK
-    lateinit var view: MatchPresenter.View
+    private lateinit var view: MatchPresenter.View
     @RelaxedMockK
-    lateinit var model: MatchModel
-    var matchId: Long = 0
+    private lateinit var model: MatchModel
+    private var matchId: Long = 0L
 
     @Before
-    fun setUp() {
+    fun setup() {
         MockKAnnotations.init(this)
         tested = MatchPresenter(view,model,matchId)
     }
 
     @Test
-    fun `should navigate to set screen when start set click`(){
+    fun `should navigate to set screen when start set click`() {
+        //when
         tested.onStartSetClick()
+        //then
         verify { view.navigateTo(SetActivity::class.java,matchId) }
     }
+
+    @Test
+    fun `should show end match dialog when match end click`() {
+        //when
+        tested.onEndMatchClick()
+        //then
+        verify { view.displayEndMatchDialog() }
+    }
+
 }
