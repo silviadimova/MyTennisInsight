@@ -34,6 +34,7 @@ class MatchPresenter (
     fun onSubmitDataModel(dataModel: MatchDataModel){
         GlobalScope.launch(Dispatchers.IO) {
             matchId = model.createMatch(dataModel)
+
         }
     }
 

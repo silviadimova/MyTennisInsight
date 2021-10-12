@@ -12,10 +12,13 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.sniper.tennis.insight.R
+import com.sniper.tennis.insight.database.MyAppDatabase
+import com.sniper.tennis.insight.match.MATCH_ID_EXTRA
 
+const val SET_ID_EXTRA = "SetIdExtra"
 class SetActivity: AppCompatActivity(), SetPresenter.View {
 
-    private val presenter = SetPresenter(this, SetModel())
+    private val presenter = SetPresenter(this, SetModel(MyAppDatabase.getInstance(this)))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +63,7 @@ class SetActivity: AppCompatActivity(), SetPresenter.View {
         alertDialog.setMessage(R.string.want_end_set).setCancelable(false)
         alertDialog.setPositiveButton(R.string.yes_button, object: DialogInterface.OnClickListener{
             override fun onClick(dialog: DialogInterface?, which: Int) {
+                presenter.onSetEndConfirm()
                 dialog?.dismiss()
             }
 
@@ -74,9 +78,15 @@ class SetActivity: AppCompatActivity(), SetPresenter.View {
         alertDialog.show()
     }
 
-    override fun navigateTo(target: Class<*>) {
+    override fun navigateTo(target: Class<*>, setID: Int) {
         val targetIntent: Intent = Intent(this,target)
+        val matchId = intent.getIntExtra(MATCH_ID_EXTRA,0)
+        targetIntent.putExtra(MATCH_ID_EXTRA, matchId)
+        targetIntent.putExtra(SET_ID_EXTRA,setID)
         startActivity(targetIntent)
+    }
+    override fun finishScreen(){
+        finish()
     }
 
 }

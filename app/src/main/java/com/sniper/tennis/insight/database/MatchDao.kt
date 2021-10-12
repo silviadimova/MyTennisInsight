@@ -16,6 +16,9 @@ interface MatchDao {
     @Query("UPDATE $MATCH_TABLE SET isFinished=true WHERE id=:theMatchId")
     suspend fun finishMatch(theMatchId: Long)
 
+    @Query("UPDATE $MATCH_TABLE SET isFinished=true WHERE id=:theSetId")
+    suspend fun finishSet(theSetId: Int)
+
     @Query("SELECT * FROM $MATCH_TABLE")
     suspend fun readAllMatches() :MutableList<MatchDataModel>
 

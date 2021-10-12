@@ -14,6 +14,8 @@ import com.sniper.tennis.insight.R
 import com.sniper.tennis.insight.dataModels.MatchDataModel
 import com.sniper.tennis.insight.database.MyAppDatabase
 
+const val MATCH_ID_EXTRA = "MatchIdExtra"
+
 class MatchActivity: AppCompatActivity(), MatchPresenter.View {
 
     private lateinit var presenter: MatchPresenter
@@ -66,6 +68,7 @@ class MatchActivity: AppCompatActivity(), MatchPresenter.View {
 
     override fun navigateTo(target: Class<*>, matchId: Long) {
         val targetIntent: Intent = Intent(this,target)
+        targetIntent.putExtra(MATCH_ID_EXTRA, matchId.toInt())
         startActivity(targetIntent)
     }
 

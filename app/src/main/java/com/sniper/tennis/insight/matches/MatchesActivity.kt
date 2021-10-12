@@ -1,8 +1,10 @@
 package com.sniper.tennis.insight.matches
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
@@ -29,7 +31,19 @@ class MatchesActivity: AppCompatActivity(), MatchesPresenter.View {
         matchesAdapter.submitList(matchesList)
     }
     fun onSelectedMatchDelete(matchDataModel: MatchDataModel,position: Int){
-        presenter.onMatchClickDelete(matchDataModel,position)
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.setMessage(R.string.want_delete_match).setCancelable(false)
+        alertDialog.setPositiveButton(R.string.yes_button,object: DialogInterface.OnClickListener{
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+                presenter.onMatchClickDelete(matchDataModel,position)
+            }
+        })
+        alertDialog.setNegativeButton(R.string.no_button,object: DialogInterface.OnClickListener{
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+                dialog?.dismiss()
+            }
+        })
+        alertDialog.show()
      }
 
     override fun removeMatch(position: Int) {

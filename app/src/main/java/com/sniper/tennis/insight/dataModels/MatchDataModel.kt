@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 const val NO_MATCH_ID: Long = 0
+const val NO_SET_ID: Int = 0
 
 const val GENERAL_ANALYSIS_TYPE = 1
 const val FOREHAND_ANALYSIS_TYPE = 2
