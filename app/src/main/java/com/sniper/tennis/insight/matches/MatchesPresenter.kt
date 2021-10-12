@@ -14,6 +14,7 @@ class MatchesPresenter (
     private lateinit var matchesList: MutableList<MatchDataModel>
 
     fun onMatchesListRead() {
+        //Todo replace the usage of GlobalScope with custom scope
         GlobalScope.launch(Dispatchers.IO){
             matchesList = model.getAllMatches()
             withContext(Dispatchers.Main){
@@ -26,7 +27,11 @@ class MatchesPresenter (
         }
     }
 
-    fun onMatchClickDelete(matchDataModel: MatchDataModel,position: Int) {
+    fun onMatchClickDelete(
+            matchDataModel: MatchDataModel,
+            position: Int
+    ) {
+        //Todo replace the usage of GlobalScope with custom scope
         GlobalScope.launch(Dispatchers.IO) {
             val deletedMatchNumber: Int = model.deleteMatch(matchDataModel)
             withContext(Dispatchers.Main) {
@@ -46,7 +51,7 @@ class MatchesPresenter (
 
     }
 
-    interface View{
+    interface View {
         fun displayMatchesList(matchesList: List<MatchDataModel>)
         fun removeMatch(position: Int)
         fun displayError()

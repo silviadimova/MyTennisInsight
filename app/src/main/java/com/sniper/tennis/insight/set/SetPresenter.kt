@@ -7,7 +7,11 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class SetPresenter (private val view: View, private val model: SetModel, private var setID: Int = NO_SET_ID) {
+class SetPresenter (
+        private val view: View,
+        private val model: SetModel,
+        private var setID: Int = NO_SET_ID
+) {
     fun onStartPointClick() {
         view.navigateTo(PointActivity::class.java,setID)
     }
@@ -17,7 +21,8 @@ class SetPresenter (private val view: View, private val model: SetModel, private
     }
 
     fun onSetEndConfirm() {
-        GlobalScope.launch(Dispatchers.IO){
+        //Todo replace the usage of GlobalScope with custom scope
+        GlobalScope.launch(Dispatchers.IO) {
             model.updateSetToFinished(setID)
             withContext(Dispatchers.Main){
                 view.finishScreen()

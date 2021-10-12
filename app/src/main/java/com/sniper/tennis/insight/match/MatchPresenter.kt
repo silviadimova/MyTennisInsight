@@ -23,6 +23,7 @@ class MatchPresenter (
     }
 
     fun onMatchEndConfirm() {
+        //Todo replace the usage of GlobalScope with custom scope
         GlobalScope.launch(Dispatchers.IO) {
             model.updateMatchToFinished(matchId)
             withContext(Dispatchers.Main) {
@@ -31,7 +32,8 @@ class MatchPresenter (
         }
     }
 
-    fun onSubmitDataModel(dataModel: MatchDataModel){
+    fun onSubmitDataModel(dataModel: MatchDataModel) {
+        //Todo replace the usage of GlobalScope with custom scope
         GlobalScope.launch(Dispatchers.IO) {
             matchId = model.createMatch(dataModel)
 

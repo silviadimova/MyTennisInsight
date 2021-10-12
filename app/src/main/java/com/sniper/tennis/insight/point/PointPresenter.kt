@@ -5,12 +5,16 @@ import com.sniper.tennis.insight.dataModels.GeneralAnalysisDataModel
 import com.sniper.tennis.insight.dataModels.isAnyPropertySelected
 import kotlinx.coroutines.*
 
-class PointPresenter (private val view: View, private val model: PointModel) {
+class PointPresenter(
+        private val view: View,
+        private val model: PointModel
+) {
 
     fun onSubmitDataModel(dataModel: GeneralAnalysisDataModel) {
-        if(dataModel.isAnyPropertySelected()){
+        if (dataModel.isAnyPropertySelected()) {
             view.hideError()
             view.showLoader()
+            //Todo replace the usage of GlobalScope with custom scope
             GlobalScope.launch (Dispatchers.IO) {
                 model.savePointProperties(dataModel)
                 delay(500)
@@ -19,13 +23,13 @@ class PointPresenter (private val view: View, private val model: PointModel) {
                     view.closePoint()
                 }
             }
-        }else{
+        } else {
             view.showError(R.string.point_error_message)
         }
 
     }
 
-    interface View{
+    interface View {
         fun showError(message: Int)
         fun hideError()
         fun showLoader()

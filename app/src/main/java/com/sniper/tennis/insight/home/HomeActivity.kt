@@ -25,8 +25,8 @@ class HomeActivity: AppCompatActivity(), HomePresenter.View {
     }
 
     override fun navigateTo(target: Class<*>) {
-        val targetIntent: Intent = Intent(this,target)
+        val targetIntent = Intent(this,target)
         startActivity(targetIntent)
-
     }
+
 }

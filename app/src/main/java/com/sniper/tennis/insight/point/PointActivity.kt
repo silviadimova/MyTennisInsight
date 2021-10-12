@@ -73,7 +73,7 @@ class PointActivity: AppCompatActivity(), PointPresenter.View {
 
         }
         saveButton.setOnClickListener {
-            val dataModel: GeneralAnalysisDataModel = GeneralAnalysisDataModel(
+            val dataModel = GeneralAnalysisDataModel(
                 setID = intent.getIntExtra(SET_ID_EXTRA,0),
                 matchID = intent.getIntExtra(MATCH_ID_EXTRA, 0),
                 successfulReturn = successfulReturnButton.isSelected,
@@ -130,7 +130,9 @@ class PointActivity: AppCompatActivity(), PointPresenter.View {
 
     override fun showError(message: Int) {
         val errorMessage: AppCompatTextView = findViewById(R.id.point_error)
-        errorMessage.setText(message)
-        errorMessage.visibility = View.VISIBLE
+        with (errorMessage) {
+            setText(message)
+            visibility = View.VISIBLE
+        }
     }
 }

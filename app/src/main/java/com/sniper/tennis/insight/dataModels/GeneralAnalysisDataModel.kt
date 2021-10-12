@@ -12,12 +12,12 @@ data class GeneralAnalysisDataModel(
     val successfulReturn: Boolean,
     val unsuccessfulReturn: Boolean,
     val firstServe: Boolean,
-    val secondServe: Boolean ,
-    val doubleFault: Boolean ,
-    val unforcedError: Boolean ,
-    val forcedError: Boolean ,
-    val opponentError: Boolean ,
-    val volley: Boolean ,
+    val secondServe: Boolean,
+    val doubleFault: Boolean,
+    val unforcedError: Boolean,
+    val forcedError: Boolean,
+    val opponentError: Boolean,
+    val volley: Boolean,
     val winner: Boolean
 ) {
     @PrimaryKey(autoGenerate = true)
