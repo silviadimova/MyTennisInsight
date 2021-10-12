@@ -9,7 +9,7 @@ interface GeneralAnalysisPointDao {
 
     @Insert
     suspend fun createPoint(generalAnalysisDataModel: GeneralAnalysisDataModel)
-    @Query("Select * from $GENERAL_ANALYSIS_TABLE_NAME")
+    @Query("SELECT * FROM $GENERAL_ANALYSIS_TABLE_NAME")
     suspend fun readAllPoints(): List<GeneralAnalysisDataModel>
     @Update
     suspend fun updatePoint(generalAnalysisDataModel: GeneralAnalysisDataModel)

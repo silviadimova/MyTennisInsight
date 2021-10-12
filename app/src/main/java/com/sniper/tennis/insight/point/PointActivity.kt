@@ -9,6 +9,8 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.sniper.tennis.insight.R
 import com.sniper.tennis.insight.dataModels.GeneralAnalysisDataModel
 import com.sniper.tennis.insight.database.MyAppDatabase
+import com.sniper.tennis.insight.match.MATCH_ID_EXTRA
+import com.sniper.tennis.insight.set.SET_ID_EXTRA
 
 class PointActivity: AppCompatActivity(), PointPresenter.View {
 
@@ -72,8 +74,8 @@ class PointActivity: AppCompatActivity(), PointPresenter.View {
         }
         saveButton.setOnClickListener {
             val dataModel: GeneralAnalysisDataModel = GeneralAnalysisDataModel(
-                setID = 0,
-                matchID = 0,
+                setID = intent.getIntExtra(SET_ID_EXTRA,0),
+                matchID = intent.getIntExtra(MATCH_ID_EXTRA, 0),
                 successfulReturn = successfulReturnButton.isSelected,
                 unsuccessfulReturn = unsuccessfulReturnButton.isSelected,
                 firstServe = firstServeButton.isSelected,
