@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:background="@color/silver">
 
-<androidx.appcompat.widget.AppCompatTextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="@string/welcome_message"
-    android:textSize="@dimen/subtitleTextSize"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/welcome_message"
+        android:textSize="@dimen/subtitleTextSize"/>
 
 </FrameLayout>

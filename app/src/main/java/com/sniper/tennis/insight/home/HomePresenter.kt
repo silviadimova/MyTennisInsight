@@ -12,6 +12,10 @@ class HomePresenter (private val view: View, private val model: HomeModel){
         view.navigateTo(MatchActivity::class.java)
     }
 
+    fun onTiebreakClick() {
+        view.navigateTo(MatchActivity::class.java)
+    }
+
     interface View{
         fun navigateTo(target :Class<*>)
 

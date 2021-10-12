@@ -37,6 +37,7 @@
     <string name="no_matches_text">You have no matches available</string>
     <string name="want_delete_match">Do you want to delete your match?</string>
     <string name="welcome_message">Wellcome to MyTennisInsight</string>
+    <string name="start_tiebreak">Start Practice Tiebreak</string>
 
 
 </resources>

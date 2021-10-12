@@ -16,6 +16,9 @@ class HomeActivity: AppCompatActivity(), HomePresenter.View {
         findViewById<AppCompatButton>(R.id.home_matches_button).setOnClickListener {
             presenter.onMatchesClick()
         }
+        findViewById<AppCompatButton>(R.id.home_tiebreak_button).setOnClickListener {
+            presenter.onTiebreakClick()
+        }
         findViewById<AppCompatButton>(R.id.home_start_button).setOnClickListener {
             presenter.onMatchClick()
         }
